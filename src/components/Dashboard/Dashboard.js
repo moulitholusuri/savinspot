@@ -1,12 +1,9 @@
 import { useApp } from '../../context/AppContext'
-import { indices, mutualFunds } from '../../data/stockData'
-import { parsePrice, formatINR } from '../../utils/formatters'
 
 export default function Dashboard({ onTrade, onOpenKYC, showToast, setPage }) {
   const { stocks, balance, kycVerified } = useApp()
 
   const gainers = stocks.filter(s => s.up).sort((a, b) => parseFloat(b.change) - parseFloat(a.change)).slice(0, 5)
-  const losers = stocks.filter(s => !s.up).slice(0, 5)
 
   return (
     <div>

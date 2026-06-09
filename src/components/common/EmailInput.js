@@ -3,7 +3,6 @@ import { validateEmail } from '../../utils/emailValidator'
 
 export default function EmailInput({ value, onChange, label = 'Email' }) {
   const [hint, setHint] = useState(null)
-  const [verifying, setVerifying] = useState(false)
   const timerRef = useRef(null)
 
   useEffect(() => {
@@ -17,10 +16,8 @@ export default function EmailInput({ value, onChange, label = 'Email' }) {
     }
 
     // Simulate async verification
-    setVerifying(true)
     setHint({ status: 'verifying', message: 'Verifying account...' })
     timerRef.current = setTimeout(() => {
-      setVerifying(false)
       setHint(validateEmail(value))
     }, 800)
   }, [value])
@@ -55,10 +52,11 @@ export default function EmailInput({ value, onChange, label = 'Email' }) {
           {!hint.valid && hint.status !== 'verifying' && '⚠ '}
           {hint.message}
           {hint.suggestion && (
-            <a style={{ color: '#2563EB', fontWeight: 600, cursor: 'pointer', marginLeft: 4 }}
+            <button type="button" style={{ color: '#2563EB', fontWeight: 600, cursor: 'pointer', marginLeft: 4,
+              border: 'none', background: 'none', padding: 0, fontFamily: 'inherit', fontSize: 11 }}
               onClick={() => onChange(hint.suggestion)}>
               Fix it
-            </a>
+            </button>
           )}
         </div>
       )}
