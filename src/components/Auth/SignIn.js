@@ -60,9 +60,10 @@ export default function SignIn({ onLogin, onSignUp, onForgot, onGoogle, showToas
             <label style={{ fontSize: 13, color: '#64748B', display: 'flex', alignItems: 'center', gap: 8 }}>
               <input type="checkbox" defaultChecked /> Remember me
             </label>
-            <a onClick={onForgot} style={{ fontSize: 13, color: '#2563EB', fontWeight: 600, cursor: 'pointer' }}>
+            <button type="button" onClick={onForgot} style={{ fontSize: 13, color: '#2563EB', fontWeight: 600, cursor: 'pointer',
+              border: 'none', background: 'none', padding: 0, fontFamily: 'inherit' }}>
               Forgot password?
-            </a>
+            </button>
           </div>
 
           <button onClick={handleSubmit} style={{
@@ -91,7 +92,8 @@ export default function SignIn({ onLogin, onSignUp, onForgot, onGoogle, showToas
           </div>
 
           <p style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: '#64748B' }}>
-            Don't have an account? <a onClick={onSignUp} style={{ color: '#2563EB', fontWeight: 600, cursor: 'pointer' }}>Create Account</a>
+            Don't have an account? <button type="button" onClick={onSignUp} style={{ color: '#2563EB', fontWeight: 600,
+              cursor: 'pointer', border: 'none', background: 'none', padding: 0, fontFamily: 'inherit', fontSize: 13 }}>Create Account</button>
           </p>
         </div>
       </div>
